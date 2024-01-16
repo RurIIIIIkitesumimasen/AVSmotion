@@ -1,0 +1,39 @@
+wandb:
+  entity: "kanazawa-nougata-lab"
+  project_name: "orientation-detection"
+  #sweepを使う際にはgroupは指定しない
+  group_name: "Dmodel-binary-learning"
+  #実験名は実験毎に記載できるといいかも
+  experiment_name: ""
+  is_save_code: False
+  is_sweep: False
+
+data:
+  path: ""
+  object_array: [4,8,16,32]
+  img_size: 4,8,16,32
+  is_noise: False
+  noise_num: ""
+
+model:
+  name: "Dmodel"
+  dendrite: 1
+  init_w_mul: 0.06
+  init_w_add: 0.5
+  init_q: 0.003
+  k: 25
+
+optimizer: 
+  name: "Adam"
+  lr: 0.0001
+  weight_decay: 0.000001
+
+scheduler:
+  name: "CosineAnnealingLR"
+  eta_min: 0.000001
+  T_max: 1000
+
+seed: 96
+batch_size: 100
+loss: "CrossEntropy"
+epoch: 500
